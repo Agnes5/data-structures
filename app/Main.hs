@@ -1,6 +1,8 @@
 module Main where
 
-import Lib
+import Stack
+import Queue
+import Dequeue
 
 main :: IO ()
-main = someFunc
+main = print "Ala ma kota"
