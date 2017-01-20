@@ -4,8 +4,10 @@ module Queue
   , isEmptyQ -- | Checks whether Queue is empty.
   , addQ     -- | Adds element to Queue.
   , remQ     -- | Removes element from the Queue, returns tuple consisting of removed element and remainings of the Queue.
+  , EmptyQueueReadException
   ) where
 
+import Control.Exception
 --interface (signature, contract)
 emptyQ :: Queue a
 isEmptyQ :: Queue a -> Bool
@@ -15,7 +17,11 @@ remQ :: Queue a -> (a, Queue a)
 --implementation
 newtype Queue a = MkQueue [a] deriving Show
 
+data EmptyQueueReadException = MkEmptyQueueReadException String deriving Show
+instance Exception EmptyQueueReadException
+
 emptyQ = MkQueue []
 isEmptyQ (MkQueue q) = null q
 addQ x (MkQueue q) = MkQueue (q ++ [x])
 remQ (MkQueue (q:qq)) = (q,MkQueue qq)
+remQ (MkQueue []) = throw $ MkEmptyQueueReadException "Robisz to źle"

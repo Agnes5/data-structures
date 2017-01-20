@@ -30,7 +30,7 @@ popBackDEQ :: Dequeue a -> Maybe (a, Dequeue a)
 fromListDEQ :: [a] -> Dequeue a
 
 --implementation
-newtype Dequeue a = MkDequeue [a] deriving Show
+newtype Dequeue a = MkDequeue [a] deriving (Show, Eq)
 emptyDEQ = MkDequeue []
 isEmptyDEQ (MkDequeue q) = null q
 lengthDEQ (MkDequeue q) = length q
