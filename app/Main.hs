@@ -5,4 +5,4 @@ import Queue
 import Dequeue
 
 main :: IO ()
-main = print "Ala ma kota"
+main = putStrLn "Please refer to Haddock's documentation. Package gives access to modules: Stack, Queue, Dequeue."
